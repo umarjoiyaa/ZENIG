@@ -575,7 +575,7 @@
             <div class="dropdown">
               <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
                 <div class="avatar avatar-sm avatar-circle">
-                  <img class="avatar-img" src="{{asset('assets/img/man.png')}}" alt="Image Description">
+                  <img class="avatar-img" @if(Auth::user()->profile != null) src="{{ asset('/profile/') }}/{{ Auth::user()->profile }}" @else src="{{asset('assets/img/man.png')}}" @endif alt="Image Description">
                   <span class="avatar-status avatar-sm-status avatar-status-success"></span>
                 </div>
               </a>
@@ -584,82 +584,18 @@
                 <div class="dropdown-item-text">
                   <div class="d-flex align-items-center">
                     <div class="avatar avatar-sm avatar-circle">
-                      <img class="avatar-img" src="{{asset('assets/img/man.png')}}" alt="Image Description">
+                      <img class="avatar-img" @if(Auth::user()->profile != null) src="{{ asset('/profile/') }}/{{ Auth::user()->profile }}" @else src="{{asset('assets/img/man.png')}}" @endif alt="Image Description">
                     </div>
                     <div class="flex-grow-1 ms-3">
-                      <h5 class="mb-0">Mark Williams</h5>
-                      <p class="card-text text-body">mark@site.com</p>
+                      <h5 class="mb-0">{{Auth::user()->full_name}}</h5>
+                      <p class="card-text text-body">{{Auth::user()->email}}</p>
                     </div>
                   </div>
                 </div>
 
-                <div class="dropdown-divider"></div>
+                <hr>
 
-                <!-- Dropdown -->
-                <div class="dropdown">
-                  <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
-
-                  <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
-                    <a class="dropdown-item" href="#">
-                      <span class="legend-indicator bg-success me-1"></span> Available
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <span class="legend-indicator bg-danger me-1"></span> Busy
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <span class="legend-indicator bg-warning me-1"></span> Away
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"> Reset status
-                    </a>
-                  </div>
-                </div>
-                <!-- End Dropdown -->
-
-                <a class="dropdown-item" href="#">Profile &amp; account</a>
-                <a class="dropdown-item" href="#">Settings</a>
-
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <div class="avatar avatar-sm avatar-dark avatar-circle">
-                        <span class="avatar-initials">HS</span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1 ms-2">
-                      <h5 class="mb-0">Htmlstream <span class="badge bg-primary rounded-pill text-uppercase ms-1">PRO</span></h5>
-                      <span class="card-text">hs.example.com</span>
-                    </div>
-                  </div>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <!-- Dropdown -->
-                <div class="dropdown">
-                  <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
-
-                  <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
-                    <a class="dropdown-item" href="#">
-                      Invite people
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Analytics
-                      <i class="bi-box-arrow-in-up-right"></i>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Customize Front
-                      <i class="bi-box-arrow-in-up-right"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- End Dropdown -->
-
-                <a class="dropdown-item" href="#">Manage team</a>
-
-                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
 
                 <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
@@ -1853,106 +1789,42 @@
                 </li>
 
                 <li class="nav-item">
-                  <!-- Account -->
-                  <div class="dropdown">
-                    <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
-                      <div class="avatar avatar-sm avatar-circle">
-                        <img class="avatar-img" src="{{asset('assets/img/man.png')}}" alt="Image Description">
-                        <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                      </div>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
-                      <div class="dropdown-item-text">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar avatar-sm avatar-circle">
-                            <img class="avatar-img" src="{{asset('assets/img/man.png')}}" alt="Image Description">
-                          </div>
-                          <div class="flex-grow-1 ms-3">
-                            <h5 class="mb-0">Mark Williams</h5>
-                            <p class="card-text text-body">mark@site.com</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="dropdown-divider"></div>
-
-                      <!-- Dropdown -->
-                      <div class="dropdown">
-                        <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
-
-                        <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
-                          <a class="dropdown-item" href="#">
-                            <span class="legend-indicator bg-success me-1"></span> Available
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <span class="legend-indicator bg-danger me-1"></span> Busy
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <span class="legend-indicator bg-warning me-1"></span> Away
-                          </a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#"> Reset status
-                          </a>
-                        </div>
-                      </div>
-                      <!-- End Dropdown -->
-
-                      <a class="dropdown-item" href="#">Profile &amp; account</a>
-                      <a class="dropdown-item" href="#">Settings</a>
-
-                      <div class="dropdown-divider"></div>
-
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex align-items-center">
-                          <div class="flex-shrink-0">
-                            <div class="avatar avatar-sm avatar-dark avatar-circle">
-                              <span class="avatar-initials">HS</span>
-                            </div>
-                          </div>
-                          <div class="flex-grow-1 ms-2">
-                            <h5 class="mb-0">Htmlstream <span class="badge bg-primary rounded-pill text-uppercase ms-1">PRO</span></h5>
-                            <span class="card-text">hs.example.com</span>
-                          </div>
+                    <!-- Account -->
+                    <div class="dropdown">
+                      <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
+                        <div class="avatar avatar-sm avatar-circle">
+                          <img class="avatar-img" @if(Auth::user()->profile != null) src="{{ asset('/profile/') }}/{{ Auth::user()->profile }}" @else src="{{asset('assets/img/man.png')}}" @endif alt="Image Description">
+                          <span class="avatar-status avatar-sm-status avatar-status-success"></span>
                         </div>
                       </a>
 
-                      <div class="dropdown-divider"></div>
-
-                      <!-- Dropdown -->
-                      <div class="dropdown">
-                        <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
-
-                        <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
-                          <a class="dropdown-item" href="#">
-                            Invite people
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            Analytics
-                            <i class="bi-box-arrow-in-up-right"></i>
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            Customize Front
-                            <i class="bi-box-arrow-in-up-right"></i>
-                          </a>
+                      <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
+                        <div class="dropdown-item-text">
+                          <div class="d-flex align-items-center">
+                            <div class="avatar avatar-sm avatar-circle">
+                              <img class="avatar-img" @if(Auth::user()->profile != null) src="{{ asset('/profile/') }}/{{ Auth::user()->profile }}" @else src="{{asset('assets/img/man.png')}}" @endif alt="Image Description">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                              <h5 class="mb-0">{{Auth::user()->full_name}}</h5>
+                              <p class="card-text text-body">{{Auth::user()->email}}</p>
+                            </div>
+                          </div>
                         </div>
+
+                        <hr>
+
+                        <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
+
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
                       </div>
-                      <!-- End Dropdown -->
-
-                      <a class="dropdown-item" href="#">Manage team</a>
-
-                      <div class="dropdown-divider"></div>
-
-                      <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
                     </div>
-                  </div>
-                  <!-- End Account -->
-                </li>
+                    <!-- End Account -->
+                  </li>
               </ul>
               <!-- End Navbar -->
             </div>
@@ -2666,7 +2538,7 @@
                     <div class="dropdown">
                       <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
                         <div class="avatar avatar-sm avatar-circle">
-                          <img class="avatar-img" src="{{asset('assets/img/man.png')}}" alt="Image Description">
+                          <img class="avatar-img" @if(Auth::user()->profile != null) src="{{ asset('/profile/') }}/{{ Auth::user()->profile }}" @else src="{{asset('assets/img/man.png')}}" @endif alt="Image Description">
                           <span class="avatar-status avatar-sm-status avatar-status-success"></span>
                         </div>
                       </a>
@@ -2675,90 +2547,26 @@
                         <div class="dropdown-item-text">
                           <div class="d-flex align-items-center">
                             <div class="avatar avatar-sm avatar-circle">
-                              <img class="avatar-img" src="{{asset('assets/img/man.png')}}" alt="Image Description">
+                              <img class="avatar-img" @if(Auth::user()->profile != null) src="{{ asset('/profile/') }}/{{ Auth::user()->profile }}" @else src="{{asset('assets/img/man.png')}}" @endif alt="Image Description">
                             </div>
                             <div class="flex-grow-1 ms-3">
-                              <h5 class="mb-0">Mark Williams</h5>
-                              <p class="card-text text-body">mark@site.com</p>
+                              <h5 class="mb-0">{{Auth::user()->full_name}}</h5>
+                              <p class="card-text text-body">{{Auth::user()->email}}</p>
                             </div>
                           </div>
                         </div>
 
-                        <div class="dropdown-divider"></div>
+                        <hr>
 
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-                          <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
-
-                          <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
-                            <a class="dropdown-item" href="#">
-                              <span class="legend-indicator bg-success me-1"></span> Available
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              <span class="legend-indicator bg-danger me-1"></span> Busy
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              <span class="legend-indicator bg-warning me-1"></span> Away
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"> Reset status
-                            </a>
-                          </div>
-                        </div>
-                        <!-- End Dropdown -->
-
-                        <a class="dropdown-item" href="#">Profile &amp; account</a>
-                        <a class="dropdown-item" href="#">Settings</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <a class="dropdown-item" href="#">
-                          <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0">
-                              <div class="avatar avatar-sm avatar-dark avatar-circle">
-                                <span class="avatar-initials">HS</span>
-                              </div>
-                            </div>
-                            <div class="flex-grow-1 ms-2">
-                              <h5 class="mb-0">Htmlstream <span class="badge bg-primary rounded-pill text-uppercase ms-1">PRO</span></h5>
-                              <span class="card-text">hs.example.com</span>
-                            </div>
-                          </div>
-                        </a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-                          <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
-
-                          <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
-                            <a class="dropdown-item" href="#">
-                              Invite people
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              Analytics
-                              <i class="bi-box-arrow-in-up-right"></i>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              Customize Front
-                              <i class="bi-box-arrow-in-up-right"></i>
-                            </a>
-                          </div>
-                        </div>
-                        <!-- End Dropdown -->
-
-                        <a class="dropdown-item" href="#">Manage team</a>
-
-                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                        </div>
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                      </div>
                     </div>
                     <!-- End Account -->
                   </li>

@@ -13,5 +13,9 @@ Auth::routes([
     'verify' => true
 ]);
 Route::middleware('auth')->group(function () {
+    //PROFILE
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
+    //DASHBOARD
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
